@@ -1,6 +1,6 @@
 #include "header.h"
 
-Node* root = NULL;
+Node* root = NULL; 
 
 /* getch implementation */
 char getch(){
@@ -130,18 +130,18 @@ void measure(Node* origin, int* length, int current)
 {
   if(current > *length) {
     *length = current;
-    printf("length: %d", *length);
+    //printf("length: %d", *length);
   }
   if(origin != NULL){ 
     if(origin->leftChild != NULL) {
-      printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
+      //printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
       measure(origin->leftChild, length, current+1);
-      printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
+      //printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
     }
     if(origin->rightChild != NULL){
-      printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
+      //printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
       measure(origin->rightChild, length, current+1);
-      printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
+      //printf("obecnie: %d, długość dotychczasowa: %d\n", current, *length);
     }
   }
 }
@@ -196,6 +196,55 @@ int add(Node* origin, char* alphaLC, char* alphaUC)
   return result;
 }
 
+Node* min_record(Node* origin)
+{
+  if(origin->leftChild == NULL) return origin;
+  else min_record(origin->leftChild);
+}
+Node* max_record(Node* origin)
+{
+  if(origin->rightChild == NULL) return origin;
+  else max_record(origin->rightChild);
+}
+
+int singleDisplay(Node* origin){
+  if(origin == NULL) return -1; /* empty pointer */
+  fputs(origin->name, stdout);
+  printf("\n");
+  fputs(origin->surname, stdout);
+  printf("\n");
+  fputs(origin->phoneNumber, stdout);
+  printf("\n");
+  return 0; /* good */
+}
+void inOrderEx(Node* origin, Node* condition)
+{
+  if(origin != NULL){ 
+    if(origin->leftChild != NULL) inOrder(origin->leftChild);
+    if(checkSurnameBoS(origin, condition, 1, alphaLC, alphaUC) == 0)
+    { printf("\n");
+      fputs(origin->name, stdout);
+      printf("\n");
+      fputs(origin->surname, stdout);
+      printf("\n");
+      fputs(origin->phoneNumber, stdout);
+      printf("\n");
+    }
+    if(origin->rightChild != NULL){
+      inOrder(origin->rightChild);
+    }
+  }
+}
+
+
+int findRecord(Node* origin)
+{
+  Node* search = create();
+  printf("\n\nSearch results:\n");
+  inOrderEx(origin, search);
+
+}
+
 main()
 {
   system("clear");
@@ -213,11 +262,16 @@ main()
     printf("- Add new record (A),\n");
     printf("- Display by order (surname ascending) (D),\n");
     printf("- Measure tree height (temporarly this option terminate program) (H),\n");
+    printf("- MIN key(B),\n");
+    printf("- MAX key (T),\n");
+    printf("- Find specified key (by surname) (F),\n");
+    //printf("-  (),\n");
     printf("- Terminate program (ESC)\n");
     int option;
     option = getch();
     int res;
     int height;
+    Node* buffer = NULL;
     switch(option){
       case 97: /* add new record */
         system("clear");
@@ -235,7 +289,21 @@ main()
         break;
       case 104:
         height = tree_height(root);
-        printf("Tree proper: %d levels.\n", height);
+        printf("\nTree levels count: %d \n", height);
+        break;
+      case 98: /* B */
+        printf("\nMIN key is:\n");
+        buffer = min_record(root);
+        if(singleDisplay(buffer)) printf("Empty pointer\n");
+        break;
+      case 116: /* T */
+        printf("\nMAX key is:\n");
+        buffer = max_record(root);
+        if(singleDisplay(buffer)) printf("Empty pointer\n");
+        break;
+      case 102:
+        printf("Type only surname and ignore other field by pressing Enter.\n");
+        findRecord(root);
         break;
       case 27:
         terminate = 0;
