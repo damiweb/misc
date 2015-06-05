@@ -1,13 +1,25 @@
 #include <iostream>
+#include "matrix.h"
+
 using namespace std;
 
 int main()
 {
-  int a, b, total ;
-   
-   cout << "Input numbers to be added: " << endl;
-   cin >> a >> b ;
-   total = a + b ;
-   cout << "The sum is " << total << endl;
+   cout << "Program działa" << endl;
+   int vecdim = 1;
+   cout << "Wpisz wymiar wektora"  << endl;
+   cin >> vecdim;
+   Vector my(vecdim);
+   my.valuesAdd();
+   cout << "wektor wygląda następująco" << endl;
+   //my.display();
+   cout << "Wpisz wymiar wektora"  << endl;
+   cin >> vecdim;
+   Vector my2(vecdim);
+   my2.valuesAdd();
+   Vector my3(2);
+   my3 = my + my2;
+   cout << "Wektor przyisany przeciążonym operatorem" << endl;
+   my3.display();
    return 0;
 }
