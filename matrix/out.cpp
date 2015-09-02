@@ -1,5 +1,16 @@
 #include "header.hpp"
 
+void stopflow()
+{
+	cout << endl << "Type 'c' and press Enter to continue" << endl;
+	char anykey;
+	cin >> anykey;
+	char rest = '1';
+	do{
+		rest = cin.get();
+	}while(rest != '\n');
+}
+
 int main()
 {
 	char mainloop = 'y';
@@ -70,6 +81,8 @@ int main()
 			delete nv; 
 			/* Everything is now fine. Output display information that 3 objects 
 			have been deleted. */
+			// stop the screen and wait for Enter
+			stopflow();
 		}
 		if(option == 2){
 			system("clear");
@@ -115,6 +128,8 @@ int main()
 			cout << "D *= B:" << endl;
 			D *= C;
 			cout << D << "*=" << C << "=" << D;
+			// stop the screen and wait for Enter
+			stopflow();
 		}
 		if(option == 3){
 			system("clear");
