@@ -14,15 +14,16 @@ class Stack{
     int index;
     int max;
 public:
-    Stack(int maxsize = 128);
-    Stack(const Stack &ref);
-    ~Stack();
+    Stack(int maxsize = 128); // constructor
+    Stack(const Stack &ref); // copy constructor
+    ~Stack(); // destructor
 
-    void push(int element);
-    void pop();
-    int top();
-    bool isempty();
-    int size();
+    void push(int element); // insert element to a stack
+    void pop(); // remove top element
+    int top(); // return top value without removing it
+    bool isempty(); // check stack caption
+    int size(); // check stack size
+    void clr(); // Stack reset
 
 };
 
@@ -39,7 +40,7 @@ class Calculator{
     int errordata; 
     char quit;
 public:
-    Calculator();
+    Calculator(); // Constructor
     void program(); // main calculator loop
     void endtest(); // 0 - OK; 1 - Too few operators to continue calculation!
     bool addition(); // 0 - OK; 1 - too few operands

@@ -52,3 +52,10 @@ bool Stack::isempty(){
 		return 0;
 	}
 }
+/* function which clear a stack */
+void Stack::clr(){
+	delete val;
+	index = 0;
+	val = new int[max];
+	for(int i = 0; i < max; i++) val[i] = 0;
+}

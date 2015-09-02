@@ -10,6 +10,7 @@ Calculator::Calculator(){
 
 void Calculator::program(){
 	do{
+		calcstack.clr();
 		system("clear");
 		cout << "WELCOME TO POSTFIX CALCULATOR. ALLOWED OPERATIONS ARE +, -, *." << endl
 		<< "PLEASE TYPE YOUR EQUATION:" << endl;
@@ -42,6 +43,7 @@ void Calculator::program(){
 		endtest();
 		cout << "Continue / Quit? [c/q]" << endl;
 		cin >> quit;
+
 	}while(quit != 'q' and quit != 'Q');
 }
 
