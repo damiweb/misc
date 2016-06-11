@@ -90,7 +90,7 @@ int main() {
         }
         if(algchoice > 0 && algchoice < 7){
             print_r(arrayff ,sz);
-            printf("Execution time in us: %d\n", (stop.tv_usec - start.tv_usec));
+            printf("Execution time in us: %d\n", (int)(stop.tv_usec - start.tv_usec));
         }
 
     }
@@ -142,7 +142,7 @@ int main() {
             gettimeofday(&start, 0);
             insertSort(insArrays[i], insSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", insSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", insSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
 
@@ -164,7 +164,7 @@ int main() {
             gettimeofday(&start, 0);
             selectSort(selArrays[i], selSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", selSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", selSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
 
@@ -186,7 +186,7 @@ int main() {
             gettimeofday(&start, 0);
             bubbleSort(bubbleArrays[i], bubbleSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", bubbleSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", bubbleSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
 
@@ -209,7 +209,7 @@ int main() {
             gettimeofday(&start, 0);
             quickSort(quickArrays[i], 0, quickSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", quickSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", quickSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
 
@@ -230,7 +230,7 @@ int main() {
             gettimeofday(&start, 0);
             heapSort(heapArrays[i], heapSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", heapSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", heapSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
 
@@ -253,7 +253,7 @@ int main() {
             gettimeofday(&start, 0);
             shellSort(shellArrays[i], shellSizes[i]);
             gettimeofday(&stop, 0);
-            fprintf(fp, "%d %d\n", shellSizes[i], (stop.tv_usec - start.tv_usec));
+            fprintf(fp, "%d %d\n", shellSizes[i], (int)(stop.tv_usec - start.tv_usec));
         }
         fclose(fp);
     }
